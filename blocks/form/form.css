@@ -220,3 +220,34 @@
         }
     }
 }
+@media (min-width: 400px) and (max-width: 899px) {
+    .form-wrapper {
+        label {
+            display: none;
+        }
+        .form input,
+        .form select,
+        .form textarea {
+            max-width: 100%;
+            padding: 13px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            border-radius: unset;
+            &:hover {
+                border: none;
+                border-bottom: 1px solid #6a6a6a;
+                border-radius: unset;
+            }
+            &:focus {
+                outline: 2px solid #070707;
+                outline-offset: 2px;
+            }
+        }
+
+        button {
+            color: #000 !important;
+            border-radius: unset;
+            background-color: #f1f1f1 !important;
+        }
+    }
+}
