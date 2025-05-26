@@ -44,3 +44,37 @@ div.section.hero-container {
         padding: 0;
     }
 }
+@media (min-width: 400px) and (max-width: 600px) {
+    .hero h1 {
+        position: absolute;
+        bottom: 90px;
+        left: 32px;
+        line-height: 50px;
+        color: #111; /* Black text */
+        background: none; /* Remove background */
+        padding: 0;
+        border-radius: 0;
+        font-size: 30px;
+        margin: 0;
+        font-family: "Playfair Display", serif;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
+}
+@media (min-width: 300px) and (max-width: 399px) {
+    .hero h1 {
+        position: absolute;
+        bottom: 125px;
+        left: 32px;
+        line-height: 50px;
+        color: #111; /* Black text */
+        background: none; /* Remove background */
+        padding: 0;
+        border-radius: 0;
+        font-size: 20px;
+        margin: 0;
+        font-family: "Playfair Display", serif;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
+}
