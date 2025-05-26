@@ -1,33 +1,56 @@
 .columns > div {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .columns img {
-  width: 100%;
+    width: 100%;
 }
 
 .columns > div > div {
-  order: 1;
+    order: 1;
 }
 
 .columns > div > .columns-img-col {
-  order: 0;
+    order: 0;
 }
 
 .columns > div > .columns-img-col img {
-  display: block;
+    display: block;
 }
 
 @media (width >= 900px) {
-  .columns > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
-  }
+    .columns > div {
+        align-items: center;
+        flex-direction: unset;
+        gap: 24px;
+    }
 
-  .columns > div > div {
-    flex: 1;
-    order: unset;
-  }
+    .columns > div > div {
+        flex: 1;
+        order: unset;
+    }
+}
+.columns h1 {
+    font-family: "Playfair Display";
+    text-align: center;
+    letter-spacing: 5px;
+    font-weight: 400;
+    margin: 10px 0;
+    font-size: 40px;
+}
+.columns h5 {
+    font-family: "Playfair Display";
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+.columns h4 {
+    font-family: "Playfair Display";
+    font-size: 20px;
+}
+
+.columns p {
+    font-family: "Times New Roman", Times, serif;
 }
