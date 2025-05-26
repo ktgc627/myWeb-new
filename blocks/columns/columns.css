@@ -20,7 +20,6 @@
 }
 
 @media (width >= 900px) {
-
     .columns > div {
         align-items: center;
         flex-direction: unset;
@@ -32,7 +31,6 @@
         order: unset;
     }
 }
-
 .columns h1 {
     font-family: "Playfair Display", serif;
     text-align: center;
