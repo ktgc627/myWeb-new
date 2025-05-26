@@ -1,6 +1,7 @@
 div.section.hero-container {
-    padding: 0px;
+    padding: 0;
 }
+
 .hero-container .hero-wrapper {
     max-width: unset;
     padding: 0;
@@ -8,7 +9,7 @@ div.section.hero-container {
 
 .hero {
     position: relative;
-    padding: 0px;
+    padding: 0;
     min-height: 300px;
 }
 
@@ -29,7 +30,7 @@ div.section.hero-container {
 }
 
 .hero picture {
-    padding: 0px;
+    padding: 0;
 }
 
 .hero img {
@@ -40,6 +41,6 @@ div.section.hero-container {
 
 @media (width >= 900px) {
     .hero {
-        padding: 0px;
+        padding: 0;
     }
 }
