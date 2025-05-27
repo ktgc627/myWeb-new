@@ -320,3 +320,9 @@ header nav .nav-tools {
         letter-spacing: 1px;   
     }
 }
+@media (min-width: 438px) and (max-width: 899px) {
+    header .nav-brand {
+    position: relative;
+    right:110px;
+    }
+}
