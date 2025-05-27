@@ -11,9 +11,10 @@ async function createForm(formHref, submitHref) {
   const fields = await Promise.all(
     json.data.map((fd) => createField(fd, form))
   );
+
   fields.forEach((field) => {
     if (field) {
-      // Add required to inputs, selects, textareas
+      // Mark required fields
       field.querySelectorAll?.("input, select, textarea").forEach((el) => {
         if (
           el.type !== "submit" &&
@@ -27,7 +28,7 @@ async function createForm(formHref, submitHref) {
     }
   });
 
-  // group fields into fieldsets
+  // group fields into fieldsets (optional if using fieldsets)
   const fieldsets = form.querySelectorAll("fieldset");
   fieldsets.forEach((fieldset) => {
     form
@@ -57,19 +58,23 @@ function generatePayload(form) {
       }
     }
   });
+
   return payload;
 }
 
-async function handleSubmit(form) {
+async function handleSubmit(form, block) {
   if (form.getAttribute("data-submitting") === "true") return;
 
-  const submit = form.querySelector('button[type="submit"]');
+  const submit = form.querySelector(
+    'button[type="submit"], input[type="submit"]'
+  );
   try {
     form.setAttribute("data-submitting", "true");
-    submit.disabled = true;
+    if (submit) submit.disabled = true;
 
     // create payload
     const payload = generatePayload(form);
+
     const response = await fetch(form.dataset.action, {
       method: "POST",
       body: JSON.stringify({ data: payload }),
@@ -77,20 +82,24 @@ async function handleSubmit(form) {
         "Content-Type": "application/json",
       },
     });
+
     if (response.ok) {
-      if (form.dataset.confirmation) {
-        window.location.href = form.dataset.confirmation;
-      }
+      // show success message
+      block.innerHTML = "<p><strong>Thanks for submitting!</strong></p>";
+
+      // reload form after 3 seconds
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
     } else {
       const error = await response.text();
       throw new Error(error);
     }
   } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error(e);
+    console.error("Submission failed:", e);
   } finally {
     form.setAttribute("data-submitting", "false");
-    submit.disabled = false;
+    if (submit) submit.disabled = false;
   }
 }
 
@@ -100,6 +109,7 @@ export default async function decorate(block) {
     (link) => link.startsWith(window.location.origin) && link.endsWith(".json")
   );
   const submitLink = links.find((link) => link !== formLink);
+
   if (!formLink || !submitLink) return;
 
   const form = await createForm(formLink, submitLink);
@@ -109,7 +119,7 @@ export default async function decorate(block) {
     e.preventDefault();
     const valid = form.checkValidity();
     if (valid) {
-      handleSubmit(form);
+      handleSubmit(form, block);
     } else {
       const firstInvalidEl = form.querySelector(":invalid:not(fieldset)");
       if (firstInvalidEl) {
