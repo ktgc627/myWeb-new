@@ -65,7 +65,7 @@ function showThankYouAndReload(form) {
   form.reset();
 
   // Replace form content with thank-you message
-  form.innerHTML = `<p>Thanks for submitting!</p>`;
+  form.innerHTML = `<p><strong>Thanks for submitting!</strong></p>`;
 
   // Reload the page after 2 seconds
   setTimeout(() => {
