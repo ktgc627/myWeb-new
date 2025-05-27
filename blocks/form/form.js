@@ -70,7 +70,7 @@ function showThankYouAndReload(form) {
   // Reload the page after 2 seconds
   setTimeout(() => {
     window.location.reload();
-  }, 2000);
+  }, 3000);
 }
 
 async function handleSubmit(form) {
