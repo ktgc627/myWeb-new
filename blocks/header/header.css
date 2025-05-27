@@ -315,3 +315,8 @@ header nav .nav-tools {
         position: unset;     
     }
 }
+@media (max-width: 375px) {
+   header nav a:any-link {
+        letter-spacing: 1px;   
+    }
+}
